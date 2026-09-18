@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react';
 import {Icon} from './ui';
 import './business.css';
 import './business-polish.css';
+import {BusinessNavbar} from './BusinessNavbar';
 
 const services=[
  {number:'01',title:'Customer communication',text:'Respond to enquiries, send appointment reminders, and keep customers informed with consistent, timely messages.'},
@@ -27,12 +28,10 @@ function Brand(){return <span className="business-brand"><span className="busine
 
 export function BusinessSite(){
  const [theme,setTheme]=useState(()=>localStorage.getItem('af-theme')||'light');
- const [menu,setMenu]=useState(false);
  useEffect(()=>{document.documentElement.dataset.theme=theme;localStorage.setItem('af-theme',theme)},[theme]);
  useEffect(()=>{const resetOldRoute=()=>{if(location.hash.startsWith('#/')){history.replaceState(null,'',location.pathname+location.search+'#home');window.scrollTo(0,0)}};resetOldRoute();window.addEventListener('hashchange',resetOldRoute);return()=>window.removeEventListener('hashchange',resetOldRoute)},[]);
- const links=[['Home','home'],['Services','services'],['Examples','examples'],['Our approach','approach']];
  return <div className="business-site">
- <header className="business-header"><div className="business-nav shell"><a href="#home" aria-label="AutoFlow home"><Brand/></a><nav aria-label="Main navigation" className={menu?'is-open':''}>{links.map(([label,id])=><a key={id} href={'#'+id} onClick={()=>setMenu(false)}>{label}</a>)}</nav><div className="business-nav-actions"><button className="business-icon-button" aria-label="Toggle dark mode" onClick={()=>setTheme(theme==='light'?'dark':'light')}><Icon name={theme==='light'?'Moon':'Sun'} size={19}/></button><a className="business-button compact" href="#examples">Explore examples <Icon name="ArrowUpRight" size={16}/></a><button className="business-icon-button business-menu" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}><Icon name={menu?'X':'Menu'}/></button></div></div></header>
+ <BusinessNavbar brand={<Brand/>} theme={theme} onToggleTheme={()=>setTheme(theme==='light'?'dark':'light')}/>
  <main>
  <section className="business-hero" id="home"><div className="shell hero-layout"><div className="hero-copy"><p className="business-kicker">BUSINESS AUTOMATION · DUBAI</p><h1>Less repetitive work.<br/><span>More room for business.</span></h1><p className="business-intro">Automate everyday business activities—from customer enquiries and document handling to internal reminders and reporting.</p><p className="hero-support">Practical uses of AI and automation that give your team more time for customers, decisions, and growth.</p><a className="business-button" href="#examples">See practical examples <Icon name="ArrowRight" size={17}/></a></div><aside className="hero-editorial"><div className="editorial-heading"><span>THE EVERYDAY OPPORTUNITY</span><Icon name="Briefcase" size={21}/></div><h2>Small tasks.<br/>A significant part<br/>of your day.</h2><p>Start with the work your team repeats most often.</p><div className="editorial-line"><span>01</span><strong>Following up with customers</strong></div><div className="editorial-line"><span>02</span><strong>Entering the same information</strong></div><div className="editorial-line"><span>03</span><strong>Collecting daily updates</strong></div><div className="editorial-note">More consistency. Less routine administration.</div></aside></div></section>
  <section className="business-section shell" id="services"><div className="business-section-heading"><div><p className="business-kicker">WHAT CAN BE AUTOMATED</p><h2>Everyday activities.<br/>Across your business.</h2></div><p>Focus on the repeatable work that takes up time. Keep your team involved where judgement, relationships, and approvals matter.</p></div><div className="service-text-grid">{services.map(s=><article key={s.number}><span className="service-number">{s.number}</span><h3>{s.title}</h3><p>{s.text}</p></article>)}</div></section>
