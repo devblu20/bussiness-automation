@@ -1,6 +1,7 @@
 import {useEffect,useState} from 'react';
 import {Icon} from './ui';
 import './business.css';
+import './business-polish.css';
 
 const services=[
  {number:'01',title:'Customer communication',text:'Respond to enquiries, send appointment reminders, and keep customers informed with consistent, timely messages.'},
