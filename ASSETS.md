@@ -1,10 +1,8 @@
-# Asset credit
+# Assets and attribution
 
-Dubai Marina photograph: Nick Fewings, Unsplash.
-Source: https://unsplash.com/photos/city-skyline-during-night-time-8_VWBXsveQE
-License: https://unsplash.com/license
-
-Automation scenarios are illustrative, not customer case studies.
-The neutral title Business Automation is used pending a confirmed company name.
-
-Professional icons: Lucide (https://lucide.dev), ISC license included in dist/icons/LICENSE. Icons embedded locally for dependable loading.
+- UI icons: Lucide, ISC license, https://lucide.dev.
+- Integration marks: Simple Icons package, CC0 collection; individual brands retain their trademarks. https://simpleicons.org.
+- Typography: DM Sans and Manrope, distributed through Google Fonts under the SIL Open Font License.
+- AutoFlow wordmark, workflow diagrams, dashboard charts, and interface layouts are implemented in local source.
+- All customer logos/names, testimonials, business metrics, and activity are illustrative. No customer endorsement is claimed.
+- The previous Dubai photograph is no longer included in the built site.
