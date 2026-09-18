@@ -1,8 +1,7 @@
 # Assets and attribution
 
-- UI icons: Lucide, ISC license, https://lucide.dev.
-- Integration marks: Simple Icons package, CC0 collection; individual brands retain their trademarks. https://simpleicons.org.
-- Typography: DM Sans and Manrope, distributed through Google Fonts under the SIL Open Font License.
-- AutoFlow wordmark, workflow diagrams, dashboard charts, and interface layouts are implemented in local source.
-- All customer logos/names, testimonials, business metrics, and activity are illustrative. No customer endorsement is claimed.
-- The previous Dubai photograph is no longer included in the built site.
+- **Dubai Marina photograph:** Nick Fewings on Unsplash. [Original photograph](https://unsplash.com/photos/city-skyline-during-night-time-8_VWBXsveQE), [Unsplash license](https://unsplash.com/license). Reused from this project's existing asset history; stored at `public/dubai-marina.jpg`.
+- **UI icons:** Lucide, ISC license. https://lucide.dev
+- **Typography:** DM Sans and Manrope, served through Google Fonts under the SIL Open Font License.
+- **Brand:** AutoFlow wordmark, favicon, and page layout are implemented in the local source.
+- **Examples:** All business scenarios are illustrative, not customer testimonials or verified customer results.

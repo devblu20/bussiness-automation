@@ -2,5 +2,3 @@ node_modules/
 *.tar.gz
 *.tsbuildinfo
 .sites-runtime/
-refine-site.py
-editorial-redesign.py
