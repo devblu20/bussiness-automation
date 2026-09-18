@@ -6,3 +6,5 @@ License: https://unsplash.com/license
 
 Automation scenarios are illustrative, not customer case studies.
 The neutral title Business Automation is used pending a confirmed company name.
+
+Professional icons: Lucide (https://lucide.dev), ISC license included in dist/icons/LICENSE. Icons embedded locally for dependable loading.
