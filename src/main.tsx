@@ -13,3 +13,4 @@ createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></Re
 import './product.css';
 import './builder.css';
 import './responsive.css';
+import './theme.css';
