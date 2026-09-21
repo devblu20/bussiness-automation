@@ -1,6 +1,6 @@
-# AutoFlow — Business Automation Dubai
+# AutoFlow — Business Automation
 
-A small React + TypeScript website explaining everyday automation through familiar Dubai business examples. Vite builds the site. There is no backend or account system to maintain.
+A small React + TypeScript website explaining everyday automation for an international audience, with examples across industries and time zones. Vite builds the site. There is no backend or account system to maintain.
 
 ## Run locally
 
@@ -15,13 +15,13 @@ Open http://127.0.0.1:4173. To build for production, run `npm run build`. To pre
 
 | File | Purpose |
 | --- | --- |
-| `src/content.ts` | Service descriptions, six local business examples, and common questions |
+| `src/content.ts` | Service descriptions, six business examples, and common questions |
 | `src/App.tsx` | Page sections, headings, and appearance preference |
 | `src/Navbar.tsx` | Desktop/mobile navigation and active section tracking |
 | `src/Icon.tsx` | Small, shared Lucide icon collection |
 | `src/styles.css` | All styling, theme colours, and responsive layouts |
 | `src/main.tsx` | React entry point |
-| `public/` | Dubai photograph and favicon |
+| `public/` | Business team photograph and favicon |
 | `index.html` | Page title, metadata, and font links |
 
 Change the colour variables at the top of `src/styles.css` to adjust the light and dark themes. Run `npm run format` after edits; `npm run format:check` checks formatting. `npm run build` checks TypeScript and creates the production output.

@@ -49,20 +49,19 @@ export function App() {
         <section className="business-hero" id="home">
           <div className="shell hero-layout">
             <div className="hero-copy">
-              <p className="business-kicker">BUSINESS AUTOMATION · DUBAI</p>
+              <p className="business-kicker">BUSINESS AUTOMATION · WORLDWIDE</p>
               <h1>
                 Everyday automation.
                 <br />
-                <span>For Dubai businesses.</span>
+                <span>For business, everywhere.</span>
               </h1>
               <p className="business-intro">
                 Less time on enquiries, invoices, reminders, and reports. More
                 time for your customers and the business you are building.
               </p>
               <p className="hero-support">
-                Explore practical ways AI and automation can support the
-                everyday work of property, trading, hospitality, and service
-                businesses.
+                Explore practical ways AI and automation can help teams across
+                industries and time zones manage their everyday work.
               </p>
               <a className="business-button" href="#examples">
                 See practical examples <Icon name="ArrowRight" size={17} />
@@ -70,15 +69,15 @@ export function App() {
             </div>
             <figure className="hero-photo">
               <img
-                src="/dubai-marina.jpg"
-                alt="Dubai Marina waterfront and illuminated buildings at dusk"
-                width="1800"
-                height="1200"
+                src="/business-team.jpg"
+                alt="Four colleagues working together at a computer in an office"
+                width="1600"
+                height="1067"
                 fetchPriority="high"
               />
               <figcaption>
                 <span className="photo-marker" />
-                Dubai Marina, UAE
+                More time for the work that brings people together.
               </figcaption>
             </figure>
           </div>
@@ -116,11 +115,11 @@ export function App() {
                 <h2>
                   Familiar tasks.
                   <br />
-                  Local business examples.
+                  Across industries.
                 </h2>
               </div>
               <p>
-                From a property office to a trading company, the opportunity
+                From a local business to an international team, the opportunity
                 starts with everyday work. These examples are illustrative, not
                 customer case studies.
               </p>
@@ -262,7 +261,7 @@ export function App() {
           </div>
           <div className="footer-small">
             <span>© {new Date().getFullYear()} AutoFlow</span>
-            <span>Dubai · Business automation</span>
+            <span>Everyday automation. Worldwide.</span>
           </div>
         </div>
       </footer>

@@ -24,7 +24,7 @@ export const examples = [
   {
     category: "SALES & CUSTOMER SERVICE",
     title: "Give every enquiry a timely response.",
-    business: "For a Dubai property brokerage",
+    business: "For a real estate agency",
     task: "Property enquiries arrive by website, email, and WhatsApp. Staff repeatedly copy contact details and arrange viewing follow-ups.",
     automation:
       "Enquiry details can be organised in one place, an acknowledgement drafted, and the right property consultant reminded to follow up.",
@@ -33,8 +33,8 @@ export const examples = [
   {
     category: "FINANCE & ADMINISTRATION",
     title: "Spend less time entering invoice details.",
-    business: "For a Deira trading business",
-    task: "Accounts staff copy supplier names, AED amounts, dates, and invoice references into spreadsheets throughout the week.",
+    business: "For a trading or wholesale business",
+    task: "Accounts staff copy supplier names, invoice amounts, currencies, dates, and references into spreadsheets throughout the week.",
     automation:
       "Document information can be extracted into a draft record, with missing or unusual details flagged for a person to check.",
     benefit: "Less data entry, with review before approval.",
@@ -42,16 +42,16 @@ export const examples = [
   {
     category: "CUSTOMER COMMUNICATION",
     title: "Keep appointments on everyone’s radar.",
-    business: "For a Dubai professional services firm",
-    task: "A team sends the same meeting confirmations, office directions, and document reminders to clients throughout the day.",
+    business: "For a professional services firm",
+    task: "A team repeatedly sends meeting confirmations, video call links, and document reminders to clients in different time zones.",
     automation:
-      "Confirmation messages and reminders can be prepared from the appointment schedule, using the customer’s preferred channel where supported.",
+      "Confirmations and reminders can be prepared from the appointment schedule, showing the agreed time zone and using the customer’s preferred channel where supported.",
     benefit: "More consistent communication and less repetitive messaging.",
   },
   {
     category: "INVENTORY & OPERATIONS",
     title: "Know when stock needs attention.",
-    business: "For an Al Quoz retail or distribution business",
+    business: "For a retailer or distribution business",
     task: "An employee checks stock sheets regularly and emails colleagues when quantities are running low.",
     automation:
       "Stock levels can be checked against agreed limits and a summary sent to the purchasing team for review.",
@@ -60,7 +60,7 @@ export const examples = [
   {
     category: "PEOPLE & ADMINISTRATION",
     title: "Make new-joiner preparation more consistent.",
-    business: "For a growing Dubai team",
+    business: "For a growing or distributed team",
     task: "HR repeatedly sends document requests and reminds different colleagues to prepare equipment, access, and induction information.",
     automation:
       "A new-joiner record can generate a standard checklist and scheduled reminders for the people responsible.",
@@ -69,7 +69,7 @@ export const examples = [
   {
     category: "MANAGEMENT & REPORTING",
     title: "Bring daily updates into one clear summary.",
-    business: "For a Dubai hospitality business",
+    business: "For a hospitality business with multiple locations",
     task: "Managers gather booking updates, guest requests, and maintenance notes from different teams before preparing a daily summary.",
     automation:
       "Updates from agreed sources can be collected into one daily summary, with AI helping draft the notes for the manager to review.",
@@ -83,7 +83,7 @@ export const questions = [
   ],
   [
     "Can AI help with customer communication?",
-    "AI can help organise enquiries and draft messages in English or Arabic, depending on the chosen tools. Your team should check the language, details, and tone before important messages are sent.",
+    "AI can help organise enquiries and draft messages in the languages your customers use, depending on the chosen tools. Your team should check language accuracy, details, and tone before important messages are sent.",
   ],
   [
     "Can this work with tools we already use?",

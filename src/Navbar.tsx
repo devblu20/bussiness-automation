@@ -74,9 +74,7 @@ export function Navbar({
             onClick={() => choose("home")}
           >
             {brand}
-            <span className="brand-descriptor">
-              Dubai · Business automation
-            </span>
+            <span className="brand-descriptor">Business automation</span>
           </a>
           <nav
             id="business-navigation"
