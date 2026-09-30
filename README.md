@@ -1,6 +1,6 @@
 # AutoFlow — Business Automation
 
-A small React + TypeScript website explaining everyday automation for an international audience, with examples across industries and time zones. Vite builds the site. There is no backend or account system to maintain.
+A small React + TypeScript website presenting custom AI and automation for financial trading, ecommerce, online marketing, and everyday business operations. Vite builds the site. There is no backend or account system to maintain.
 
 ## Run locally
 
@@ -15,8 +15,8 @@ Open http://127.0.0.1:4173. To build for production, run `npm run build`. To pre
 
 | File | Purpose |
 | --- | --- |
-| `src/content.ts` | Service descriptions, six business examples, and common questions |
-| `src/App.tsx` | Page sections, headings, and appearance preference |
+| `src/content.ts` | Four service areas, four illustrative use cases, and common questions |
+| `src/App.tsx` | Page sections, scroll-reveal motion, and appearance preference |
 | `src/Navbar.tsx` | Desktop/mobile navigation and active section tracking |
 | `src/Icon.tsx` | Small, shared Lucide icon collection |
 | `src/styles.css` | All styling, theme colours, and responsive layouts |
@@ -39,6 +39,6 @@ Unused SaaS screens, workflow builders, old style layers, one-off migration scri
 
 ## Website behaviour
 
-The site includes responsive navigation, section links, active section indicators, and light/dark mode. Only the appearance preference is saved in browser storage. Old application hash URLs return to the informational homepage.
+The site includes responsive navigation, section links, active section indicators, native expandable FAQs, and light/dark mode. Section entrances and hover feedback respect reduced-motion preferences. Content stays readable without motion support. Only the appearance preference is saved in browser storage. Old application hash URLs return to the informational homepage.
 
 All business examples are illustrative. There are no customer accounts, dashboards, pricing plans, live integrations, or automation execution on this informational website.

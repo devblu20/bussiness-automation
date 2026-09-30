@@ -3,8 +3,8 @@ import { Icon } from "./Icon";
 
 const links = [
   ["Home", "home"],
-  ["Services", "services"],
-  ["Examples", "examples"],
+  ["Expertise", "services"],
+  ["Use cases", "examples"],
   ["Our approach", "approach"],
 ];
 export function Navbar({
@@ -74,7 +74,6 @@ export function Navbar({
             onClick={() => choose("home")}
           >
             {brand}
-            <span className="brand-descriptor">Business automation</span>
           </a>
           <nav
             id="business-navigation"
@@ -90,12 +89,11 @@ export function Navbar({
                 onClick={() => choose(id)}
               >
                 <span>{label}</span>
-                <Icon name="ArrowUpRight" size={17} />
               </a>
             ))}
             <div className="mobile-nav-action">
               <a href="#examples" onClick={() => choose("examples")}>
-                Explore the examples <Icon name="ArrowRight" size={16} />
+                Explore use cases
               </a>
             </div>
           </nav>
@@ -123,7 +121,7 @@ export function Navbar({
               href="#examples"
               onClick={() => choose("examples")}
             >
-              Explore examples <Icon name="ArrowUpRight" size={16} />
+              Explore use cases
             </a>
             <button
               ref={toggle}

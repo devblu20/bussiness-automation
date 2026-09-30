@@ -1,31 +1,47 @@
 import {
   ArrowRight,
   ArrowUpRight,
-  Building2,
   Check,
+  ChartNoAxesCombined,
+  Files,
+  Globe2,
+  Layers3,
   Menu,
+  MessageSquare,
   Moon,
+  Settings2,
   Sun,
+  Users,
   X,
+  ShoppingBag,
+  Megaphone,
+  Activity,
+  Plus,
+  Minus,
 } from "lucide-react";
-
 const icons = {
   ArrowRight,
   ArrowUpRight,
-  Building: Building2,
   Check,
+  Analytics: ChartNoAxesCombined,
+  Documents: Files,
+  Globe: Globe2,
+  Layers: Layers3,
   Menu,
+  Messages: MessageSquare,
   Moon,
+  Operations: Settings2,
   Sun,
+  People: Users,
   X,
+  Commerce: ShoppingBag,
+  Marketing: Megaphone,
+  Trading: Activity,
+  Plus,
+  Minus,
 };
-
-type IconProps = {
-  name: keyof typeof icons;
-  size?: number;
-};
-
+type IconProps = { name: keyof typeof icons; size?: number };
 export function Icon({ name, size = 20 }: IconProps) {
   const Component = icons[name];
-  return <Component size={size} strokeWidth={1.7} aria-hidden="true" />;
+  return <Component size={size} strokeWidth={1.6} aria-hidden="true" />;
 }

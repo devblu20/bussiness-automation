@@ -1,96 +1,108 @@
 export const services = [
   {
     number: "01",
-    title: "Customer communication",
-    text: "Respond to enquiries, send appointment reminders, and keep customers informed with consistent, timely messages.",
+    id: "trading",
+    icon: "Trading",
+    label: "FINANCIAL MARKETS",
+    title: "Trading intelligence.",
+    text: "Custom tools for stocks, forex, and crypto. Bring market data, research, alerts, and trade records into a clearer working day.",
+    tags: ["Market monitoring", "Strategy research", "Trade journals"],
+    example: "From scattered market data to a focused daily brief.",
   },
   {
     number: "02",
-    title: "Data & documents",
-    text: "Reduce repeated typing, organise information, and extract useful details from documents for your team to review.",
+    id: "ecommerce",
+    icon: "Commerce",
+    label: "ECOMMERCE",
+    title: "Commerce that keeps up.",
+    text: "Connect the work behind your storefront. Simplify product information, order updates, stock checks, and customer enquiries.",
+    tags: ["Order operations", "Product data", "Customer support"],
+    example: "From repeated order enquiries to timely customer updates.",
   },
   {
     number: "03",
-    title: "Internal operations",
-    text: "Make routine reminders, approval requests, task assignments, and employee administration easier to manage.",
+    id: "marketing",
+    icon: "Marketing",
+    label: "ONLINE MARKETING",
+    title: "More focus. Less admin.",
+    text: "Support your marketing team with AI-assisted content, lead follow-ups, and reporting across campaigns and channels.",
+    tags: ["Content assistance", "Lead nurturing", "Campaign reporting"],
+    example: "From separate campaign exports to one useful summary.",
   },
   {
     number: "04",
-    title: "Business reporting",
-    text: "Bring information together and prepare regular summaries so managers spend less time collecting updates.",
+    id: "operations",
+    icon: "Operations",
+    label: "BUSINESS OPERATIONS",
+    title: "A better everyday.",
+    text: "Take repetitive work off your team’s plate. Organise documents, prepare invoices, send reminders, and keep information moving.",
+    tags: ["Document processing", "Internal approvals", "Management reports"],
+    example: "From manual document entry to records ready for review.",
   },
-];
+] as const;
+
 export const examples = [
   {
-    category: "SALES & CUSTOMER SERVICE",
-    title: "Give every enquiry a timely response.",
-    business: "For a real estate agency",
-    task: "Property enquiries arrive by website, email, and WhatsApp. Staff repeatedly copy contact details and arrange viewing follow-ups.",
+    category: "TRADING",
+    title: "Start the day with the relevant market context.",
+    business: "For traders and market research teams",
+    task: "Reviewing watchlists, market updates, and yesterday’s trade notes across several tools.",
     automation:
-      "Enquiry details can be organised in one place, an acknowledgement drafted, and the right property consultant reminded to follow up.",
-    benefit: "Less copying and fewer enquiries left waiting.",
+      "Collect data from authorised sources, flag predefined conditions, and prepare a research brief and trade-journal summary for review.",
+    benefit:
+      "A more organised research process. Trading decisions remain yours.",
   },
   {
-    category: "FINANCE & ADMINISTRATION",
-    title: "Spend less time entering invoice details.",
-    business: "For a trading or wholesale business",
-    task: "Accounts staff copy supplier names, invoice amounts, currencies, dates, and references into spreadsheets throughout the week.",
+    category: "ECOMMERCE",
+    title: "Keep customers informed after checkout.",
+    business: "For online stores and commerce teams",
+    task: "Checking order statuses and repeatedly answering delivery and return enquiries.",
     automation:
-      "Document information can be extracted into a draft record, with missing or unusual details flagged for a person to check.",
-    benefit: "Less data entry, with review before approval.",
+      "Use order data to prepare timely status updates, draft answers to common questions, and route exceptions to the right person.",
+    benefit:
+      "Less repetitive support work. More attention to customers who need it.",
   },
   {
-    category: "CUSTOMER COMMUNICATION",
-    title: "Keep appointments on everyone’s radar.",
-    business: "For a professional services firm",
-    task: "A team repeatedly sends meeting confirmations, video call links, and document reminders to clients in different time zones.",
+    category: "ONLINE MARKETING",
+    title: "Turn campaign data into a useful next step.",
+    business: "For marketing teams and agencies",
+    task: "Exporting results from different channels and assembling a weekly performance report.",
     automation:
-      "Confirmations and reminders can be prepared from the appointment schedule, showing the agreed time zone and using the customer’s preferred channel where supported.",
-    benefit: "More consistent communication and less repetitive messaging.",
+      "Bring agreed metrics together, highlight changes, and draft a summary for the team to review before making campaign decisions.",
+    benefit:
+      "More time to improve campaigns. Less time compiling spreadsheets.",
   },
   {
-    category: "INVENTORY & OPERATIONS",
-    title: "Know when stock needs attention.",
-    business: "For a retailer or distribution business",
-    task: "An employee checks stock sheets regularly and emails colleagues when quantities are running low.",
+    category: "BUSINESS OPERATIONS",
+    title: "Move invoices forward with less manual entry.",
+    business: "For finance and administration teams",
+    task: "Copying invoice details into records and following up with colleagues for approval.",
     automation:
-      "Stock levels can be checked against agreed limits and a summary sent to the purchasing team for review.",
-    benefit: "Earlier visibility without repeatedly checking spreadsheets.",
-  },
-  {
-    category: "PEOPLE & ADMINISTRATION",
-    title: "Make new-joiner preparation more consistent.",
-    business: "For a growing or distributed team",
-    task: "HR repeatedly sends document requests and reminds different colleagues to prepare equipment, access, and induction information.",
-    automation:
-      "A new-joiner record can generate a standard checklist and scheduled reminders for the people responsible.",
-    benefit: "Clearer responsibilities and fewer missed administrative tasks.",
-  },
-  {
-    category: "MANAGEMENT & REPORTING",
-    title: "Bring daily updates into one clear summary.",
-    business: "For a hospitality business with multiple locations",
-    task: "Managers gather booking updates, guest requests, and maintenance notes from different teams before preparing a daily summary.",
-    automation:
-      "Updates from agreed sources can be collected into one daily summary, with AI helping draft the notes for the manager to review.",
-    benefit: "Less time compiling updates and more time acting on them.",
+      "Extract key fields, flag missing information, and prepare a record and approval reminder for the responsible person.",
+    benefit:
+      "A clearer review process, with people responsible for final approval.",
   },
 ];
+
 export const questions = [
   [
-    "What does business automation mean?",
-    "It means using software to handle repetitive activities, such as recording enquiries, preparing reminders, or collecting information for a report. The aim is to reduce routine administration.",
+    "What do you build?",
+    "We create custom AI tools and automations for financial trading, ecommerce, online marketing, and everyday business operations. The starting point is a specific business task, the tools you use, and the outcome you need.",
   ],
   [
-    "Can AI help with customer communication?",
-    "AI can help organise enquiries and draft messages in the languages your customers use, depending on the chosen tools. Your team should check language accuracy, details, and tone before important messages are sent.",
+    "What does trading automation include?",
+    "Examples include market monitoring, rule-based alerts, research assistance, strategy testing tools, and trade journals for stocks, forex, or crypto. Scope depends on available data and platform access. These tools do not guarantee returns; research and trading decisions require your own review.",
   ],
   [
-    "Can this work with tools we already use?",
-    "Email, spreadsheets, customer databases, and other business software may be suitable. What is possible depends on the tools, their available connections, and the access your business authorises.",
+    "Can you work with our existing tools?",
+    "We start with your current systems. Where APIs, approved integrations, or suitable data exports are available, we can connect them to reduce duplicate work. Compatibility and access are confirmed before a project begins.",
   ],
   [
-    "Do we need to automate everything at once?",
-    "No. A practical starting point is one frequent, well-defined task. Agree what a good result looks like, test it with the team, and expand only when it is useful.",
+    "Will AI send messages or make decisions on its own?",
+    "That depends on the agreed design. We define review points and permissions with your team, so important customer communication, financial decisions, and approvals stay under appropriate human control.",
+  ],
+  [
+    "How does a project start?",
+    "Choose one recurring task and describe how it works today. We assess the information and tools involved, agree a small initial scope, and test the result with your team before expanding.",
   ],
 ];
