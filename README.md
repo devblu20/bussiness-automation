@@ -18,6 +18,7 @@ Open http://127.0.0.1:4173. To build for production, run `npm run build`. To pre
 | `src/content.ts` | Four service areas, four illustrative use cases, and common questions |
 | `src/NetworkBackground.tsx` | Original responsive canvas mesh with light trails, pointer response, and reduced-motion handling |
 | `src/App.tsx` | Page sections, scroll-reveal motion, and appearance preference |
+| `src/ServiceAtmosphere.tsx` | Decorative service signatures and pointer highlights; pauses offscreen and respects reduced motion |
 | `src/Navbar.tsx` | Desktop/mobile navigation and active section tracking |
 | `src/Icon.tsx` | Small, shared Lucide icon collection |
 | `src/styles.css` | All styling, theme colours, and responsive layouts |

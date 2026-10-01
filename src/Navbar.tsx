@@ -92,8 +92,8 @@ export function Navbar({
               </a>
             ))}
             <div className="mobile-nav-action">
-              <a href="#examples" onClick={() => choose("examples")}>
-                Explore use cases
+              <a href="#contact" onClick={() => choose("contact")}>
+                Contact us
               </a>
             </div>
           </nav>
@@ -118,10 +118,10 @@ export function Navbar({
             <span className="nav-divider" />
             <a
               className="nav-primary"
-              href="#examples"
-              onClick={() => choose("examples")}
+              href="#contact"
+              onClick={() => choose("contact")}
             >
-              Explore use cases
+              Contact us
             </a>
             <button
               ref={toggle}

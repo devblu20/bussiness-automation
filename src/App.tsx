@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Icon } from "./Icon";
 import { Navbar } from "./Navbar";
 import { NetworkBackground } from "./NetworkBackground";
+import { ServiceAtmosphere } from "./ServiceAtmosphere";
 import { services, examples, questions, productVisuals } from "./content";
 import "./styles.css";
 
@@ -208,6 +209,7 @@ export function App() {
                     height="1067"
                     loading="lazy"
                   />
+                  <ServiceAtmosphere area={s.id} />
                   <span className="service-photo-label">{s.label}</span>
                 </div>
                 <div className="service-content">
@@ -381,10 +383,14 @@ export function App() {
             </div>
           </div>
         </section>
-        <section className="business-close">
+        <section
+          className="business-close"
+          id="contact"
+          aria-label="Contact Aaliden"
+        >
           <div className="shell close-layout" data-reveal>
             <div>
-              <p className="business-kicker">YOUR NEXT CHAPTER</p>
+              <p className="business-kicker">LET’S TALK</p>
               <h2>
                 Make more room
                 <br />
@@ -392,9 +398,18 @@ export function App() {
               </h2>
               <p>One useful automation can be a very good start.</p>
             </div>
-            <a className="business-button" href="#examples">
-              Find your starting point <Icon name="ArrowUpRight" size={20} />
-            </a>
+            <address className="contact-details">
+              <a href="mailto:Siraj@aaliden.com">
+                <span>Email us</span>
+                <strong>Siraj@aaliden.com</strong>
+                <Icon name="ArrowUpRight" size={20} />
+              </a>
+              <a href="tel:+971586307552">
+                <span>Call us</span>
+                <strong>+971 58 630 7552</strong>
+                <Icon name="ArrowUpRight" size={20} />
+              </a>
+            </address>
           </div>
         </section>
       </main>
@@ -413,6 +428,7 @@ export function App() {
               <a href="#services">Expertise</a>
               <a href="#examples">Use cases</a>
               <a href="#approach">Our approach</a>
+              <a href="#contact">Contact</a>
             </nav>
           </div>
           <div className="footer-small">
