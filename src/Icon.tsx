@@ -18,6 +18,8 @@ import {
   Activity,
   Plus,
   Minus,
+  Play,
+  Pause,
 } from "lucide-react";
 const icons = {
   ArrowRight,
@@ -39,6 +41,8 @@ const icons = {
   Trading: Activity,
   Plus,
   Minus,
+  Play,
+  Pause,
 };
 type IconProps = { name: keyof typeof icons; size?: number };
 export function Icon({ name, size = 20 }: IconProps) {

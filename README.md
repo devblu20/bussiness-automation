@@ -1,4 +1,4 @@
-# AutoFlow — Business Automation
+# Aaliden — Business Automation
 
 A small React + TypeScript website presenting custom AI and automation for financial trading, ecommerce, online marketing, and everyday business operations. Vite builds the site. There is no backend or account system to maintain.
 
@@ -16,12 +16,13 @@ Open http://127.0.0.1:4173. To build for production, run `npm run build`. To pre
 | File | Purpose |
 | --- | --- |
 | `src/content.ts` | Four service areas, four illustrative use cases, and common questions |
+| `src/NetworkBackground.tsx` | Original responsive canvas mesh with light trails, pointer response, and reduced-motion handling |
 | `src/App.tsx` | Page sections, scroll-reveal motion, and appearance preference |
 | `src/Navbar.tsx` | Desktop/mobile navigation and active section tracking |
 | `src/Icon.tsx` | Small, shared Lucide icon collection |
 | `src/styles.css` | All styling, theme colours, and responsive layouts |
 | `src/main.tsx` | React entry point |
-| `public/` | Business team photograph and favicon |
+| `public/` | Service photographs, business team photograph, and favicon |
 | `index.html` | Page title, metadata, and font links |
 
 Change the colour variables at the top of `src/styles.css` to adjust the light and dark themes. Run `npm run format` after edits; `npm run format:check` checks formatting. `npm run build` checks TypeScript and creates the production output.
@@ -39,6 +40,7 @@ Unused SaaS screens, workflow builders, old style layers, one-off migration scri
 
 ## Website behaviour
 
-The site includes responsive navigation, section links, active section indicators, native expandable FAQs, and light/dark mode. Section entrances and hover feedback respect reduced-motion preferences. Content stays readable without motion support. Only the appearance preference is saved in browser storage. Old application hash URLs return to the informational homepage.
+The site includes responsive navigation, section links, active section indicators, native expandable FAQs, and light/dark mode. Staggered section entrances, restrained card lifts, and button light reflections respect reduced-motion preferences. Content stays readable without motion support. The hero uses an original procedural canvas background: a sparse moving surface, fine light traces, abstract signal curves, and subtle pointer response. The background is purely atmospheric, with no workflow or product diagrams. Light mode uses a softer, lower-contrast treatment. It stops when offscreen or in a background tab and renders a still frame for reduced-motion preferences. Service photographs are static. There is no slideshow or playback UI. Only the appearance preference is saved in browser storage. Old application hash URLs return to the informational homepage.
 
 All business examples are illustrative. There are no customer accounts, dashboards, pricing plans, live integrations, or automation execution on this informational website.
+

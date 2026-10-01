@@ -70,7 +70,7 @@ export function Navbar({
           <a
             className="refined-brand"
             href="#home"
-            aria-label="AutoFlow home"
+            aria-label="Aaliden home"
             onClick={() => choose("home")}
           >
             {brand}
