@@ -1,9 +1,12 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { App } from "./App";
 
-createRoot(document.getElementById("root")!).render(
+const container = document.getElementById("root")!;
+const page = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+if (container.hasChildNodes()) hydrateRoot(container, page);
+else createRoot(container).render(page);
