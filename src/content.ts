@@ -41,79 +41,13 @@ export const services = [
   },
 ] as const;
 
-export const examples = [
-  {
-    category: "TRADING",
-    title: "Start the day with the relevant market context.",
-    business: "For traders and market research teams",
-    task: "Reviewing watchlists, market updates, and yesterday’s trade notes across several tools.",
-    automation:
-      "Collect data from authorised sources, flag predefined conditions, and prepare a research brief and trade-journal summary for review.",
-    benefit:
-      "A more organised research process. Trading decisions remain yours.",
-  },
-  {
-    category: "ECOMMERCE",
-    title: "Keep customers informed after checkout.",
-    business: "For online stores and commerce teams",
-    task: "Checking order statuses and repeatedly answering delivery and return enquiries.",
-    automation:
-      "Use order data to prepare timely status updates, draft answers to common questions, and route exceptions to the right person.",
-    benefit:
-      "Less repetitive support work. More attention to customers who need it.",
-  },
-  {
-    category: "ONLINE MARKETING",
-    title: "Turn campaign data into a useful next step.",
-    business: "For marketing teams and agencies",
-    task: "Exporting results from different channels and assembling a weekly performance report.",
-    automation:
-      "Bring agreed metrics together, highlight changes, and draft a summary for the team to review before making campaign decisions.",
-    benefit:
-      "More time to improve campaigns. Less time compiling spreadsheets.",
-  },
-  {
-    category: "BUSINESS OPERATIONS",
-    title: "Move invoices forward with less manual entry.",
-    business: "For finance and administration teams",
-    task: "Copying invoice details into records and following up with colleagues for approval.",
-    automation:
-      "Extract key fields, flag missing information, and prepare a record and approval reminder for the responsible person.",
-    benefit:
-      "A clearer review process, with people responsible for final approval.",
-  },
-];
-
-export const questions = [
-  [
-    "What do you build?",
-    "We create custom AI tools and automations for financial trading, ecommerce, online marketing, and everyday business operations. The starting point is a specific business task, the tools you use, and the outcome you need.",
-  ],
-  [
-    "What does trading automation include?",
-    "Examples include market monitoring, rule-based alerts, research assistance, strategy testing tools, and trade journals for stocks, forex, or crypto. Scope depends on available data and platform access. These tools do not guarantee returns; research and trading decisions require your own review.",
-  ],
-  [
-    "Can you work with our existing tools?",
-    "We start with your current systems. Where APIs, approved integrations, or suitable data exports are available, we can connect them to reduce duplicate work. Compatibility and access are confirmed before a project begins.",
-  ],
-  [
-    "Will AI send messages or make decisions on its own?",
-    "That depends on the agreed design. We define review points and permissions with your team, so important customer communication, financial decisions, and approvals stay under appropriate human control.",
-  ],
-  [
-    "How does a project start?",
-    "Choose one recurring task and describe how it works today. We assess the information and tools involved, agree a small initial scope, and test the result with your team before expanding.",
-  ],
-];
-
 export const productVisuals = [
   {
     id: "trading",
     label: "TRADING INTELLIGENCE",
     shortName: "Trading",
     linkLabel: "trading",
-    image: "/images/trading.jpg",
+    image: "/images/trading-kinetic.png",
     alt: "Financial market analysis displayed on trading screens",
     headline: "A clearer view of the markets.",
     description:
@@ -124,8 +58,8 @@ export const productVisuals = [
     label: "ECOMMERCE AUTOMATION",
     shortName: "Ecommerce",
     linkLabel: "ecommerce",
-    image: "/images/ecommerce-shopping.jpg",
-    alt: "A customer shopping online with a laptop and payment card",
+    image: "/images/ecommerce-kinetic.png",
+    alt: "Order parcels in a blue-lit fulfilment centre",
     headline: "Behind every order. Ahead of the routine.",
     description:
       "Connect product information, customer updates, and order operations so your team can focus on the customer.",
@@ -135,8 +69,8 @@ export const productVisuals = [
     label: "ONLINE MARKETING",
     shortName: "Marketing",
     linkLabel: "marketing",
-    image: "/images/marketing.jpg",
-    alt: "A professional team discussing digital marketing work",
+    image: "/images/marketing-kinetic.png",
+    alt: "Marketing analytics screens in a dark workspace",
     headline: "More insight. More room to create.",
     description:
       "Bring campaign information together, prepare useful reports, and support content creation with AI.",
@@ -146,8 +80,8 @@ export const productVisuals = [
     label: "BUSINESS OPERATIONS",
     shortName: "Operations",
     linkLabel: "operations",
-    image: "/business-team.jpg",
-    alt: "Colleagues collaborating at a computer in an office",
+    image: "/images/operations-kinetic.png",
+    alt: "Colleagues discussing business operations in a modern office",
     headline: "Make the everyday work better.",
     description:
       "Organise documents, simplify administration, and keep approvals moving with people in control.",

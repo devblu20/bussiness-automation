@@ -4,489 +4,326 @@ import { services, productVisuals } from "./content";
 import "./styles.css";
 
 const links = [
-  ["Practice", "services"],
-  ["In practice", "story"],
+  ["Practices", "practices"],
+  ["In practice", "in-practice"],
   ["Approach", "approach"],
 ] as const;
-const approach = [
-  [
-    "01",
-    "Start with the work.",
-    "We listen to your team, understand the recurring task, and identify where a little intelligence could make a meaningful difference.",
-  ],
-  [
-    "02",
-    "Build with intention.",
-    "We connect the right tools and information, define clear boundaries, and make space for human review.",
-  ],
-  [
-    "03",
-    "Refine in the real world.",
-    "Your team tests the solution in context. We improve what matters before extending it to more of your business.",
-  ],
+
+const steps = [
+  {
+    number: "01",
+    title: "Map",
+    image: "/images/approach-map.png",
+    alt: "Consultant reviewing business notes beside a laptop",
+    text: "We start with a recurring task, the people involved, and the tools your team already uses.",
+  },
+  {
+    number: "02",
+    title: "Build",
+    image: "/images/approach-build.png",
+    alt: "Specialist working on a laptop in a dark workspace",
+    text: "We create a focused solution with clear boundaries and review points where they matter.",
+  },
+  {
+    number: "03",
+    title: "Refine",
+    image: "/images/approach-refine.png",
+    alt: "Two colleagues reviewing work together on a laptop",
+    text: "Your team tests it in context. We improve its usefulness before extending the work.",
+  },
 ];
-function useEditorialMotion() {
-  useEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-reveal]"),
-    );
-    const picture = document.querySelector<HTMLElement>(".hero-photo");
-    const hero = document.querySelector<HTMLElement>(".editorial-hero");
-    let frame = 0,
-      inView = true;
-    const update = () => {
-      frame = 0;
-      if (!picture || !hero) return;
-      const offset = preference.matches
-        ? 0
-        : Math.max(
-            -24,
-            Math.min(24, -hero.getBoundingClientRect().top * 0.045),
-          );
-      picture.style.setProperty("--parallax", `${offset}px`);
-    };
-    const scroll = () => {
-      if (!preference.matches && inView && !frame)
-        frame = requestAnimationFrame(update);
-    };
-    const reveal = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            reveal.unobserve(entry.target);
-          }
-        }),
-      { threshold: 0.08 },
-    );
-    elements.forEach((element) => {
-      if (
-        !preference.matches &&
-        element.getBoundingClientRect().top > window.innerHeight
-      ) {
-        element.classList.add("reveal-ready");
-        reveal.observe(element);
-      } else element.classList.add("is-visible");
-    });
-    const sync = () => {
-      if (preference.matches) {
-        elements.forEach((element) => element.classList.add("is-visible"));
-        cancelAnimationFrame(frame);
-        frame = 0;
-        update();
-      }
-      if (hero)
-        hero.dataset.motion =
-          inView && !document.hidden && !preference.matches
-            ? "running"
-            : "paused";
-    };
-    const visibility = new IntersectionObserver(
-      ([entry]) => {
-        inView = entry.isIntersecting;
-        sync();
-      },
-      { threshold: 0 },
-    );
-    if (hero) visibility.observe(hero);
-    preference.addEventListener("change", sync);
-    document.addEventListener("visibilitychange", sync);
-    window.addEventListener("scroll", scroll, { passive: true });
-    sync();
-    return () => {
-      reveal.disconnect();
-      visibility.disconnect();
-      cancelAnimationFrame(frame);
-      preference.removeEventListener("change", sync);
-      document.removeEventListener("visibilitychange", sync);
-      window.removeEventListener("scroll", scroll);
-    };
-  }, []);
+
+function Brand() {
+  return (
+    <span className="brand">
+      <span className="brand-mark" aria-hidden="true">
+        A
+      </span>
+      <span>Aaliden</span>
+    </span>
+  );
 }
+
 export function App() {
-  const [menu, setMenu] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
-  useEditorialMotion();
+
   useEffect(() => {
-    if (!menu) return;
-    const close = (event: KeyboardEvent) => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setMenu(false);
+        setMenuOpen(false);
         menuButton.current?.focus();
       }
     };
-    const wide = window.matchMedia("(min-width: 801px)");
-    const resize = () => {
-      if (wide.matches) setMenu(false);
+    const wide = window.matchMedia("(min-width: 821px)");
+    const onResize = () => {
+      if (wide.matches) setMenuOpen(false);
     };
-    window.addEventListener("keydown", close);
-    wide.addEventListener("change", resize);
+    window.addEventListener("keydown", onKey);
+    wide.addEventListener("change", onResize);
     return () => {
-      window.removeEventListener("keydown", close);
-      wide.removeEventListener("change", resize);
+      window.removeEventListener("keydown", onKey);
+      wide.removeEventListener("change", onResize);
     };
-  }, [menu]);
+  }, [menuOpen]);
+
   return (
-    <div className="editorial-page">
+    <div className="site">
       <a className="skip-link" href="#main">
         Skip to content
       </a>
       <header className="site-header">
-        <div className="shell header-inner">
-          <a className="wordmark" href="#home" aria-label="Aaliden home">
-            Aaliden
-            <span className="wordmark-star" aria-hidden="true">
-              ✳
-            </span>
+        <div className="container header-inner">
+          <a href="#home" aria-label="Aaliden home" className="brand-link">
+            <Brand />
           </a>
-          <span className="header-note">
-            INDEPENDENT THINKING.
-            <br />
-            INTELLIGENT SYSTEMS.
-          </span>
           <nav
-            id="main-nav"
-            className={menu ? "main-nav is-open" : "main-nav"}
+            id="site-navigation"
+            className={menuOpen ? "site-nav is-open" : "site-nav"}
             aria-label="Main navigation"
           >
-            {links.map(([name, id]) => (
-              <a key={id} href={"#" + id} onClick={() => setMenu(false)}>
-                {name}
+            {links.map(([label, id]) => (
+              <a href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>
+                {label}
               </a>
             ))}
             <a
               className="nav-contact"
               href="#contact"
-              onClick={() => setMenu(false)}
+              onClick={() => setMenuOpen(false)}
             >
-              Let’s talk <Icon name="ArrowUpRight" size={15} />
+              Contact <Icon name="ArrowUpRight" size={15} />
             </a>
           </nav>
           <button
             ref={menuButton}
+            type="button"
             className="menu-toggle"
-            aria-expanded={menu}
-            aria-controls="main-nav"
-            onClick={() => setMenu(!menu)}
-            aria-label={menu ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="site-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            <Icon name={menu ? "X" : "Menu"} size={23} />
+            <Icon name={menuOpen ? "X" : "Menu"} size={21} />
           </button>
         </div>
       </header>
       <main id="main">
-        <section className="editorial-hero shell" id="home">
-          <div className="hero-heading" data-reveal>
-            <p className="eyebrow">
-              <span className="index">A / 01</span> PRACTICAL AI & AUTOMATION
-            </p>
-            <h1>
-              Less busywork.
-              <br />
-              More <em>possibility.</em>
-            </h1>
-            <div className="hero-introduction">
-              <p>
-                Intelligent tools for the work that matters.
-                <br />
-                We build AI and automation around your business,
-                <br className="desktop-break" /> so your people can get back to
-                moving it forward.
+        <section className="hero" id="home">
+          <div className="ambient-grid" aria-hidden="true" />
+          <div className="hero-sweep" aria-hidden="true" />
+          <div className="container hero-grid">
+            <div className="hero-copy rise-in">
+              <p className="eyebrow-badge">
+                <span className="signal-dot" /> HUMAN-LED INTELLIGENCE
               </p>
-              <a className="button" href="#contact">
-                Start a conversation <Icon name="ArrowUpRight" size={18} />
-              </a>
-            </div>
-          </div>
-          <div className="hero-scene" data-reveal>
-            <figure className="hero-photo editorial-photo">
-              <img
-                src="/images/marketing.jpg"
-                alt="An overhead view of a team reviewing documents and screens around a shared workspace"
-                width="1600"
-                height="1067"
-                fetchPriority="high"
-              />
-              <figcaption>
-                <span>THE WORK, RECONSIDERED.</span>
-                <span>FIELD NOTES / AALIDEN</span>
-              </figcaption>
-            </figure>
-            <span className="orbit-label orbit-one">Human judgement.</span>
-            <span className="orbit-label orbit-two">Machine precision.</span>
-            <aside
-              className="approval-card"
-              aria-label="Illustrative human approval"
-            >
-              <div className="approval-top">
-                <span>THE HUMAN CHECKPOINT</span>
-                <Icon name="Check" size={18} />
-              </div>
-              <p>
-                Intelligence assists.
+              <h1>
+                Less busywork.
                 <br />
-                <em>You decide.</em>
+                <span>More possibility.</span>
+              </h1>
+              <p className="hero-description">
+                Practical AI and automation for trading, ecommerce, marketing,
+                and the work that keeps your business moving.
               </p>
-              <div className="approval-bottom">
-                <span className="approval-dot" /> Built around your team
-              </div>
-            </aside>
-          </div>
-          <div className="hero-caption">
-            <span>Thoughtful technology. Useful outcomes.</span>
-            <a href="#services">
-              Explore our practice <Icon name="ArrowRight" size={15} />
-            </a>
-          </div>
-        </section>
-        <div className="sector-strip">
-          <div className="shell">
-            <span className="eyebrow">OUR FOCUS</span>
-            {[
-              "Financial markets",
-              "Ecommerce",
-              "Online marketing",
-              "Business operations",
-            ].map((label) => (
-              <span key={label}>{label}</span>
-            ))}
-          </div>
-        </div>
-        <section className="section shell" id="services">
-          <div className="section-heading" data-reveal>
-            <div>
-              <p className="eyebrow">
-                <span className="index">01 / THE PRACTICE</span>
-              </p>
-              <h2>
-                Four disciplines.
-                <br />
-                <em>One practical mindset.</em>
-              </h2>
-            </div>
-            <p>
-              From market research to the next customer order, we focus on the
-              work behind the work. Clear problems. Thoughtful tools. A more
-              useful working day.
-            </p>
-          </div>
-          <div className="practice-grid">
-            {services.map((service, index) => (
-              <article
-                className={"practice-card practice-" + service.id}
-                id={service.id}
-                key={service.id}
-                data-reveal
-              >
-                <a
-                  className="practice-image editorial-photo"
-                  href="#story"
-                  aria-label={
-                    "Explore " +
-                    productVisuals[index].shortName +
-                    " automation examples"
-                  }
-                >
-                  <img
-                    src={productVisuals[index].image}
-                    alt={productVisuals[index].alt}
-                    width="1600"
-                    height="1067"
-                    loading="lazy"
-                  />
-                  <span className="practice-number">/{service.number}</span>
-                  <div className="practice-image-title">
-                    <h3>{productVisuals[index].shortName}</h3>
-                    <span className="circle-arrow">
-                      <Icon name="ArrowUpRight" size={23} />
-                    </span>
-                  </div>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#contact">
+                  Start a conversation <Icon name="ArrowUpRight" size={18} />
                 </a>
-                <div className="practice-copy">
-                  <p>{service.text}</p>
-                  <ul>
-                    {service.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+                <a className="button button-glass" href="#practices">
+                  Explore our practices <Icon name="ArrowRight" size={18} />
+                </a>
+              </div>
+              <p className="hero-aside">Practical AI. People in control.</p>
+            </div>
+            <div className="hero-visual rise-in">
+              <div className="hero-photo">
+                <img
+                  src="/images/hero-business-team.png"
+                  alt="Business team reviewing data and working together in a modern office"
+                  width="1672"
+                  height="941"
+                  fetchPriority="high"
+                />
+              </div>
+              <p className="hero-image-caption">
+                Technology shaped around the people who use it.
+              </p>
+            </div>
           </div>
         </section>
-        <section className="section story-section" id="story">
-          <div className="shell">
-            <div className="section-heading" data-reveal>
+        <section className="section practices" id="practices">
+          <div className="container">
+            <div className="section-heading">
               <div>
-                <p className="eyebrow">
-                  <span className="index">02 / IN PRACTICE</span>
-                </p>
+                <p className="eyebrow">01 / THE PRACTICE</p>
                 <h2>
-                  Same business.
+                  Built for the work
                   <br />
-                  <em>A different working day.</em>
+                  <span>that moves business.</span>
                 </h2>
               </div>
               <p>
-                Take a familiar example: the weekly business report. The goal
-                isn’t more software. It’s less time piecing things together.
+                Different sectors. The same practical aim: spend less time on
+                routine work and more time on decisions that matter.
               </p>
             </div>
-            <div className="comparison" data-reveal>
-              <article>
-                <div className="comparison-label">
-                  <span>BEFORE</span>
-                  <span>01 — THE MANUAL WAY</span>
-                </div>
-                <h3>
-                  A morning spent
-                  <br />
-                  chasing the numbers.
-                </h3>
-                <ul>
-                  <li>Download reports from separate tools.</li>
-                  <li>Copy figures into a spreadsheet.</li>
-                  <li>Chase missing information.</li>
-                  <li>Write the same summary again.</li>
-                </ul>
-                <p className="comparison-note">
-                  Your team assembles the information.
-                </p>
-              </article>
-              <article className="comparison-after">
-                <div className="comparison-label">
-                  <span>AFTER</span>
-                  <span>02 — WITH AUTOMATION</span>
-                </div>
-                <h3>
-                  A clear first draft.
-                  <br />
-                  Ready for your judgement.
-                </h3>
-                <ul>
-                  <li>Agreed data brought together automatically.</li>
-                  <li>Missing details flagged for attention.</li>
-                  <li>A useful summary prepared for review.</li>
-                  <li>Your team approves what gets shared.</li>
-                </ul>
-                <p className="comparison-note">
-                  Your team focuses on what it means.
-                </p>
-              </article>
+            <div className="practice-grid">
+              {services.map((service, index) => (
+                <article className="practice-card" key={service.id}>
+                  <div className="practice-photo">
+                    <img
+                      src={productVisuals[index].image}
+                      alt={productVisuals[index].alt}
+                      width="1536"
+                      height="1024"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="practice-body">
+                    <div className="practice-meta">
+                      <span className="number-chip">{service.number}</span>
+                      <span>{service.label}</span>
+                    </div>
+                    <h3>{productVisuals[index].shortName}</h3>
+                    <p>{service.text}</p>
+                    <div className="practice-example">
+                      <span>AN EXAMPLE</span>
+                      <p>{service.example}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
-            <p className="fine-print">
-              An illustrative example. Capabilities depend on your tools, data
-              access, and agreed project scope.
-            </p>
           </div>
         </section>
-        <section className="principle-section shell" data-reveal>
-          <p className="eyebrow">
-            <span className="index">OUR GUIDING PRINCIPLE</span>
-          </p>
-          <span className="editorial-asterisk" aria-hidden="true">
-            ✳
-          </span>
-          <h2>
-            Let technology
-            <br />
-            do the heavy lifting.
-            <br />
-            <em>Keep people in control.</em>
-          </h2>
-          <p>
-            AI can organise, surface patterns, and prepare a first draft.
-            <br />
-            Your people bring context, judgement, and the final say.
-          </p>
-        </section>
-        <section className="section shell approach-section" id="approach">
-          <div className="section-heading" data-reveal>
-            <div>
-              <p className="eyebrow">
-                <span className="index">03 / THE APPROACH</span>
-              </p>
+        <section className="section in-practice" id="in-practice">
+          <div className="container practice-story">
+            <div className="story-intro">
+              <p className="eyebrow">02 / IN PRACTICE</p>
               <h2>
-                Start small.
+                From routine
                 <br />
-                <em>Make it matter.</em>
+                <span>to room to think.</span>
               </h2>
+              <p>
+                A weekly report is one example. The goal is a clearer first
+                draft, with your team still responsible for the final decision.
+              </p>
+              <p className="fine-print">
+                Illustrative example. Capabilities depend on your tools, data
+                access, and agreed project scope.
+              </p>
             </div>
-            <p>
-              A focused partnership, from understanding the everyday problem to
-              building something your team can actually use.
-            </p>
-          </div>
-          <div className="approach-grid">
-            {approach.map(([number, title, text]) => (
-              <article key={number} data-reveal>
-                <span className="approach-number">{number}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
+            <div className="story-pair">
+              <article className="story-card">
+                <p className="story-label">BEFORE / THE MANUAL WAY</p>
+                <h3>Assembling the picture.</h3>
+                <ul>
+                  <li>Collect figures from separate tools.</li>
+                  <li>Copy details into a spreadsheet.</li>
+                  <li>Chase gaps and write the same summary again.</li>
+                </ul>
               </article>
-            ))}
+              <article className="story-card story-card-after">
+                <p className="story-label">AFTER / WITH AUTOMATION</p>
+                <h3>Ready for your review.</h3>
+                <ul>
+                  <li>Bring agreed data together.</li>
+                  <li>Flag missing details for attention.</li>
+                  <li>Prepare a useful draft for your team to approve.</li>
+                </ul>
+              </article>
+            </div>
           </div>
         </section>
-        <section className="contact-section" id="contact">
-          <div className="shell contact-layout" data-reveal>
-            <div>
-              <p className="eyebrow">
-                <span className="index">04 / YOUR NEXT CHAPTER</span>
+        <section className="section approach" id="approach">
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">03 / THE APPROACH</p>
+                <h2>
+                  Start small.
+                  <br />
+                  <span>Make it matter.</span>
+                </h2>
+              </div>
+              <p>
+                We build around real tasks, real constraints, and the people who
+                use the result.
               </p>
-              <h2>
-                What could your
-                <br />
-                business do with
-                <br />
-                <em>a little more room?</em>
-              </h2>
-              <p>Tell us about the work you’d like to change.</p>
             </div>
-            <address>
+            <div className="approach-layout">
+              <div className="approach-photo">
+                <img
+                  src="/images/approach-glass.png"
+                  alt="Glass sphere refracting a delicate cyan grid"
+                  width="1254"
+                  height="1254"
+                  loading="lazy"
+                />
+              </div>
+              <div className="step-grid">
+                {steps.map((step) => (
+                  <article className="step-card" key={step.number}>
+                    <div className="step-image">
+                      <img
+                        src={step.image}
+                        alt={step.alt}
+                        width="1448"
+                        height="1086"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="step-content">
+                      <span className="step-number">{step.number}</span>
+                      <h3>{step.title}</h3>
+                      <p>{step.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="section contact" id="contact">
+          <div className="ambient-grid" aria-hidden="true" />
+          <div className="container contact-layout">
+            <div>
+              <p className="eyebrow">04 / YOUR NEXT CHAPTER</p>
+              <h2>
+                Tell us what
+                <br />
+                <span>could work better.</span>
+              </h2>
+              <p>One useful change can be a very good start.</p>
+            </div>
+            <div className="contact-actions">
               <a
+                className="button button-primary"
                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Siraj%40aaliden.com&amp;su=Project%20enquiry"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>WRITE TO US</span>
-                <strong>Siraj@aaliden.com</strong>
-                <Icon name="ArrowUpRight" size={23} />
+                Siraj@aaliden.com <Icon name="ArrowUpRight" size={18} />
               </a>
-              <a href="tel:+971586307552">
-                <span>GIVE US A CALL</span>
-                <strong>+971 58 630 7552</strong>
-                <Icon name="ArrowUpRight" size={23} />
+              <a className="button button-glass" href="tel:+971586307552">
+                +971 58 630 7552 <Icon name="ArrowUpRight" size={18} />
               </a>
-              <p>A conversation is a good place to start.</p>
-            </address>
+            </div>
           </div>
         </section>
       </main>
-      <footer className="site-footer shell">
-        <div>
-          <a href="#home" className="wordmark">
-            Aaliden
-            <span className="wordmark-star" aria-hidden="true">
-              ✳
-            </span>
+      <footer className="footer">
+        <div className="container footer-inner">
+          <a href="#home" aria-label="Aaliden home">
+            <Brand />
           </a>
-          <p>
-            Practical intelligence.
-            <br />
-            Built around your business.
-          </p>
-        </div>
-        <nav aria-label="Footer navigation">
-          <a href="#services">Practice</a>
-          <a href="#story">In practice</a>
-          <a href="#approach">Approach</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div className="footer-bottom">
-          <span>© Aaliden {new Date().getFullYear()}</span>
-          <span>INDEPENDENT THINKING. INTELLIGENT SYSTEMS.</span>
-          <a href="#home">Back to top ↑</a>
+          <span>Practical AI. People in control.</span>
+          <a className="footer-top" href="#home">
+            Back to top <Icon name="ArrowUpRight" size={16} />
+          </a>
         </div>
       </footer>
     </div>
