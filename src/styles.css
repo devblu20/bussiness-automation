@@ -1252,3 +1252,467 @@ em {
     transform: none;
   }
 }
+/* Editorial card system: the photo, copy, and action share one clear boundary. */
+.practice-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.practice-image {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  height: 300px;
+}
+.practice-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px 28px 27px;
+}
+.practice-copy p {
+  max-width: 55ch;
+}
+.practice-copy ul {
+  margin: auto 0 0;
+  padding-top: 19px;
+  border-top: 1px solid var(--line-soft);
+  line-height: 1.6;
+}
+.practice-grid {
+  align-items: stretch;
+  gap: 24px;
+}
+.comparison {
+  border: 0;
+  gap: 20px;
+  align-items: stretch;
+}
+.comparison article,
+.comparison article + article {
+  display: flex;
+  flex-direction: column;
+  padding: 33px 34px 29px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--background);
+}
+.comparison .comparison-after {
+  border-color: color-mix(in oklch, var(--primary) 35%, var(--line));
+  background: var(--surface-raised);
+}
+.comparison-note {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.approach-grid {
+  gap: 20px;
+  align-items: stretch;
+}
+.approach-grid article {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.approach-grid h3 {
+  margin: 40px 0 15px;
+}
+.approach-grid p {
+  max-width: 38ch;
+}
+.principle-section {
+  margin-block: 24px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background:
+    radial-gradient(ellipse at 50% 100%, var(--glow), var(--transparent)),
+    var(--surface);
+}
+.contact-layout address > a {
+  margin-bottom: 12px;
+  padding: 21px 23px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--background);
+  transition:
+    border-color 0.25s,
+    background 0.25s;
+}
+.contact-layout address > a:hover,
+.contact-layout address > a:focus-visible {
+  border-color: var(--primary);
+  background: var(--surface-raised);
+}
+@media (max-width: 800px) {
+  .practice-image {
+    height: 255px;
+  }
+  .practice-copy {
+    padding: 22px;
+  }
+  .comparison article,
+  .comparison article + article {
+    padding: 27px;
+  }
+  .approach-grid article {
+    padding: 24px;
+  }
+}
+@media (max-width: 560px) {
+  .practice-image {
+    height: 270px;
+  }
+  .comparison {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .comparison article,
+  .comparison article + article {
+    padding: 25px;
+    border: 1px solid var(--line);
+  }
+  .comparison .comparison-after {
+    border-color: color-mix(in oklch, var(--primary) 35%, var(--line));
+  }
+  .approach-grid {
+    gap: 14px;
+  }
+  .approach-grid h3 {
+    margin-top: 23px;
+  }
+  .principle-section {
+    width: calc(100% - 40px);
+    padding: 53px 16px;
+  }
+  .contact-layout address > a {
+    padding: 19px;
+  }
+}
+/* Hero hierarchy and image framing. */
+.hero-heading {
+  padding-top: clamp(48px, 6vw, 84px);
+  padding-bottom: 0;
+}
+.hero-heading h1 {
+  font-size: clamp(3.6rem, 6.3vw, 6rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.065em;
+  max-width: 100%;
+  margin-top: 24px;
+}
+.hero-introduction {
+  position: static;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  max-width: none;
+  margin-top: 30px;
+}
+.hero-introduction p {
+  max-width: 560px;
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  line-height: 1.65;
+}
+.hero-introduction .button {
+  margin-top: 0;
+  white-space: nowrap;
+}
+.hero-scene {
+  margin: clamp(38px, 5vw, 62px) 0 24px;
+}
+.hero-photo {
+  height: clamp(390px, 43vw, 545px);
+}
+.hero-photo img {
+  object-position: 50% 45%;
+}
+.approval-card {
+  right: 25px;
+  bottom: 25px;
+  width: 234px;
+  padding: 19px 21px;
+  box-shadow: 0 16px 36px var(--shadow);
+}
+.approval-card > p {
+  font-size: 1.13rem;
+  line-height: 1.35;
+  margin: 17px 0;
+}
+.approval-top {
+  font-size: 0.47rem;
+  padding-bottom: 12px;
+}
+.approval-bottom {
+  font-size: 0.54rem;
+  padding-top: 12px;
+}
+.orbit-label {
+  padding: 8px 12px;
+  font-size: 0.58rem;
+}
+.orbit-one {
+  right: 26px;
+  top: 24px;
+  transform: none;
+}
+.orbit-two {
+  left: 24px;
+  bottom: 26px;
+}
+.hero-caption {
+  padding-bottom: 29px;
+}
+/* One deliberate type scale across the page. */
+h2 {
+  font-size: clamp(2.15rem, 3.6vw, 3.35rem);
+  font-weight: 500;
+  line-height: 1.16;
+}
+h3 {
+  font-weight: 500;
+}
+.section-heading h2 {
+  font-size: inherit;
+}
+.section-heading > div h2 {
+  font-size: clamp(2.2rem, 3.7vw, 3.4rem);
+  line-height: 1.14;
+}
+.principle-section h2 {
+  font-size: clamp(2.55rem, 4.7vw, 4.4rem);
+}
+.contact-layout h2 {
+  font-size: clamp(2.35rem, 4vw, 3.8rem);
+}
+.practice-image-title h3 {
+  font-size: clamp(1.85rem, 2.65vw, 2.35rem);
+}
+.comparison h3 {
+  font-size: clamp(1.55rem, 2.3vw, 2.1rem);
+}
+.approach-grid h3 {
+  font-size: clamp(1.35rem, 1.7vw, 1.65rem);
+}
+/* Cards share image size, text rhythm, and a stable bottom metadata row. */
+.practice-image {
+  height: clamp(240px, 25vw, 312px);
+}
+.practice-copy {
+  min-height: 180px;
+}
+.practice-copy p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+.practice-copy ul {
+  width: 100%;
+}
+.practice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.practice-card {
+  min-width: 0;
+}
+.comparison {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.approach-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {
+  .hero-heading h1 {
+    font-size: clamp(3.6rem, 6.6vw, 5.6rem);
+  }
+  .hero-introduction {
+    max-width: none;
+  }
+  .hero-photo {
+    height: clamp(385px, 46vw, 500px);
+  }
+  .section-heading {
+    gap: clamp(32px, 5vw, 70px);
+  }
+}
+@media (max-width: 800px) {
+  .hero-heading h1 {
+    font-size: clamp(3.3rem, 8.5vw, 4.7rem);
+  }
+  .hero-introduction {
+    display: flex;
+    max-width: none;
+    align-items: center;
+    gap: 24px;
+  }
+  .hero-introduction p {
+    font-size: 0.89rem;
+  }
+  .hero-introduction .button {
+    flex-shrink: 0;
+  }
+  .hero-photo {
+    height: 390px;
+  }
+  .approval-card {
+    right: 20px;
+    bottom: 20px;
+    width: 210px;
+  }
+  .orbit-one {
+    right: 20px;
+  }
+  .practice-image {
+    height: clamp(220px, 33vw, 280px);
+  }
+  .practice-copy {
+    min-height: 205px;
+  }
+  .section-heading > div h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+  }
+}
+@media (max-width: 640px) {
+  .shell {
+    width: calc(100% - 40px);
+  }
+  .hero-heading {
+    padding-top: 42px;
+  }
+  .hero-heading h1 {
+    font-size: clamp(2.9rem, 10vw, 4.1rem);
+    line-height: 1.08;
+  }
+  .hero-introduction {
+    display: block;
+    margin-top: 25px;
+  }
+  .hero-introduction p {
+    max-width: 42ch;
+    font-size: 0.89rem;
+  }
+  .hero-introduction .button {
+    display: inline-flex;
+    margin-top: 21px;
+    white-space: normal;
+  }
+  .hero-scene {
+    margin: 34px 0 76px;
+  }
+  .hero-photo {
+    height: clamp(300px, 78vw, 420px);
+  }
+  .hero-photo img {
+    object-position: 50% 42%;
+  }
+  .approval-card {
+    right: 14px;
+    bottom: -56px;
+    width: min(205px, 58vw);
+    padding: 15px 17px;
+  }
+  .approval-card > p {
+    font-size: 1rem;
+    margin: 11px 0;
+  }
+  .approval-top {
+    font-size: 0.43rem;
+    padding-bottom: 9px;
+  }
+  .approval-bottom {
+    font-size: 0.49rem;
+    padding-top: 9px;
+  }
+  .orbit-one {
+    right: 12px;
+    top: 12px;
+  }
+  .orbit-two {
+    left: 12px;
+    bottom: 12px;
+  }
+  .hero-caption {
+    align-items: center;
+  }
+  .practice-grid,
+  .comparison,
+  .approach-grid {
+    grid-template-columns: 1fr;
+  }
+  .practice-image {
+    height: clamp(220px, 66vw, 340px);
+  }
+  .practice-copy {
+    min-height: 0;
+    gap: 18px;
+  }
+  .practice-copy ul {
+    margin-top: 0;
+  }
+  .section-heading {
+    grid-template-columns: 1fr;
+  }
+  .section-heading > div h2 {
+    font-size: clamp(2.25rem, 8vw, 3rem);
+  }
+  .principle-section h2 {
+    font-size: clamp(2.3rem, 7.7vw, 3.3rem);
+  }
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .site-footer nav {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 380px) {
+  .hero-heading h1 {
+    font-size: clamp(2.65rem, 10vw, 3rem);
+  }
+  .hero-photo {
+    height: 295px;
+  }
+  .orbit-label {
+    font-size: 0.48rem;
+    padding: 7px 8px;
+  }
+  .approval-card {
+    width: 180px;
+  }
+  .sector-strip > .shell {
+    gap: 10px 14px;
+  }
+  .practice-copy {
+    padding: 20px;
+  }
+  .comparison article,
+  .comparison article + article {
+    padding: 22px;
+  }
+  .footer-bottom {
+    gap: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo img {
+    transform: translateY(-30px);
+  }
+}
+@media (max-width: 640px) {
+  .orbit-two {
+    top: 60px;
+    bottom: auto;
+    left: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .orbit-two {
+    top: 54px;
+  }
+}
