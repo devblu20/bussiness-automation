@@ -1,6 +1,5 @@
 export const services = [
   {
-    number: "01",
     id: "trading",
     icon: "Trading",
     label: "FINANCIAL MARKETS",
@@ -10,7 +9,6 @@ export const services = [
     example: "From scattered market data to a focused daily brief.",
   },
   {
-    number: "02",
     id: "ecommerce",
     icon: "Commerce",
     label: "ECOMMERCE",
@@ -20,7 +18,6 @@ export const services = [
     example: "From repeated order enquiries to timely customer updates.",
   },
   {
-    number: "03",
     id: "marketing",
     icon: "Marketing",
     label: "ONLINE MARKETING",
@@ -30,7 +27,6 @@ export const services = [
     example: "From separate campaign exports to one useful summary.",
   },
   {
-    number: "04",
     id: "operations",
     icon: "Operations",
     label: "BUSINESS OPERATIONS",
@@ -47,7 +43,7 @@ export const productVisuals = [
     label: "TRADING INTELLIGENCE",
     shortName: "Trading",
     linkLabel: "trading",
-    image: "/images/trading-kinetic.png",
+    image: "/images/trading-kinetic.jpg",
     alt: "Financial market analysis displayed on trading screens",
     headline: "A clearer view of the markets.",
     description:
@@ -58,7 +54,7 @@ export const productVisuals = [
     label: "ECOMMERCE AUTOMATION",
     shortName: "Ecommerce",
     linkLabel: "ecommerce",
-    image: "/images/ecommerce-kinetic.png",
+    image: "/images/ecommerce-kinetic.jpg",
     alt: "Order parcels in a blue-lit fulfilment centre",
     headline: "Behind every order. Ahead of the routine.",
     description:
@@ -69,7 +65,7 @@ export const productVisuals = [
     label: "ONLINE MARKETING",
     shortName: "Marketing",
     linkLabel: "marketing",
-    image: "/images/marketing-kinetic.png",
+    image: "/images/marketing-kinetic.jpg",
     alt: "Marketing analytics screens in a dark workspace",
     headline: "More insight. More room to create.",
     description:
@@ -80,7 +76,7 @@ export const productVisuals = [
     label: "BUSINESS OPERATIONS",
     shortName: "Operations",
     linkLabel: "operations",
-    image: "/images/operations-kinetic.png",
+    image: "/images/operations-kinetic.jpg",
     alt: "Colleagues discussing business operations in a modern office",
     headline: "Make the everyday work better.",
     description:

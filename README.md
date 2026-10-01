@@ -16,6 +16,10 @@ Run `npm run build` to check TypeScript, build assets, and pre-render the homepa
 - `src/main.tsx`: production hydration and development rendering.
 - `scripts/prerender.mjs`: complete homepage HTML during the production build.
 - `index.html`: SEO metadata and Sora/Manrope font loading.
-- `public/images/`: generated photographs documented in `ASSETS.md`.
+- `public/images/`: optimized generated photographs documented in `ASSETS.md`.
 
 The weekly-report before/after is explicitly illustrative, not a customer result. No client names, testimonials, or performance metrics are used. The email button opens Gmail compose directly; the phone button uses a telephone link. Gmail may ask visitors to sign in. Neither link sends a message automatically.
+
+## Search visibility
+
+The production build includes pre-rendered homepage text, a canonical URL for `https://www.aaliden.com/`, Organization and WebSite structured data, social metadata, `robots.txt`, and a one-page `sitemap.xml`. Keep those URLs aligned if the primary domain changes. After deployment, verify the site in Google Search Console, submit `https://www.aaliden.com/sitemap.xml`, and inspect the homepage URL. Search indexing and ranking are determined by search engines, not by the build.

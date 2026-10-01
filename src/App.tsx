@@ -13,21 +13,21 @@ const steps = [
   {
     number: "01",
     title: "Map",
-    image: "/images/approach-map.png",
+    image: "/images/approach-map.jpg",
     alt: "Consultant reviewing business notes beside a laptop",
     text: "We start with a recurring task, the people involved, and the tools your team already uses.",
   },
   {
     number: "02",
     title: "Build",
-    image: "/images/approach-build.png",
+    image: "/images/approach-build.jpg",
     alt: "Specialist working on a laptop in a dark workspace",
     text: "We create a focused solution with clear boundaries and review points where they matter.",
   },
   {
     number: "03",
     title: "Refine",
-    image: "/images/approach-refine.png",
+    image: "/images/approach-refine.jpg",
     alt: "Two colleagues reviewing work together on a laptop",
     text: "Your team tests it in context. We improve its usefulness before extending the work.",
   },
@@ -124,8 +124,9 @@ export function App() {
                 <span>More possibility.</span>
               </h1>
               <p className="hero-description">
-                Practical AI and automation for trading, ecommerce, marketing,
-                and the work that keeps your business moving.
+                Aaliden is an AI and automation consultancy building practical
+                solutions for trading, ecommerce, online marketing, and everyday
+                business operations.
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#contact">
@@ -140,10 +141,10 @@ export function App() {
             <div className="hero-visual rise-in">
               <div className="hero-photo">
                 <img
-                  src="/images/hero-business-team.png"
+                  src="/images/hero-business-team.jpg"
                   alt="Business team reviewing data and working together in a modern office"
-                  width="1672"
-                  height="941"
+                  width="1280"
+                  height="720"
                   fetchPriority="high"
                 />
               </div>
@@ -171,19 +172,26 @@ export function App() {
             </div>
             <div className="practice-grid">
               {services.map((service, index) => (
-                <article className="practice-card" key={service.id}>
+                <article
+                  className="practice-card"
+                  id={service.id}
+                  key={service.id}
+                >
                   <div className="practice-photo">
                     <img
                       src={productVisuals[index].image}
                       alt={productVisuals[index].alt}
-                      width="1536"
-                      height="1024"
+                      width="900"
+                      height="600"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="practice-body">
                     <div className="practice-meta">
-                      <span className="number-chip">{service.number}</span>
+                      <span className="practice-icon">
+                        <Icon name={service.icon} size={17} />
+                      </span>
                       <span>{service.label}</span>
                     </div>
                     <h3>{productVisuals[index].shortName}</h3>
@@ -257,11 +265,12 @@ export function App() {
             <div className="approach-layout">
               <div className="approach-photo">
                 <img
-                  src="/images/approach-glass.png"
+                  src="/images/approach-glass.jpg"
                   alt="Glass sphere refracting a delicate cyan grid"
-                  width="1254"
-                  height="1254"
+                  width="900"
+                  height="900"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="step-grid">
@@ -271,9 +280,10 @@ export function App() {
                       <img
                         src={step.image}
                         alt={step.alt}
-                        width="1448"
-                        height="1086"
+                        width="900"
+                        height="675"
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div className="step-content">
@@ -306,24 +316,71 @@ export function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Siraj@aaliden.com <Icon name="ArrowUpRight" size={18} />
+                <span className="contact-link-label">
+                  <Icon name="Mail" size={18} />
+                  Siraj@aaliden.com
+                </span>
+                <Icon name="ArrowUpRight" size={18} />
               </a>
               <a className="button button-glass" href="tel:+971586307552">
-                +971 58 630 7552 <Icon name="ArrowUpRight" size={18} />
+                <span className="contact-link-label">
+                  <Icon name="Phone" size={18} />
+                  +971 58 630 7552
+                </span>
+                <Icon name="ArrowUpRight" size={18} />
               </a>
             </div>
           </div>
         </section>
       </main>
       <footer className="footer">
-        <div className="container footer-inner">
-          <a href="#home" aria-label="Aaliden home">
-            <Brand />
-          </a>
-          <span>Practical AI. People in control.</span>
-          <a className="footer-top" href="#home">
-            Back to top <Icon name="ArrowUpRight" size={16} />
-          </a>
+        <div className="container">
+          <div className="footer-main">
+            <div className="footer-brand">
+              <a href="#home" aria-label="Aaliden home">
+                <Brand />
+              </a>
+              <p>
+                Practical AI and automation for trading, ecommerce, marketing,
+                and the work behind everyday business.
+              </p>
+              <span>Practical AI. People in control.</span>
+            </div>
+            <nav className="footer-column" aria-label="Footer navigation">
+              <h2>Explore</h2>
+              <a href="#practices">Our practices</a>
+              <a href="#in-practice">In practice</a>
+              <a href="#approach">Our approach</a>
+            </nav>
+            <nav className="footer-column" aria-label="Practice areas">
+              <h2>Expertise</h2>
+              <a href="#trading">Trading</a>
+              <a href="#ecommerce">Ecommerce</a>
+              <a href="#marketing">Marketing</a>
+              <a href="#operations">Operations</a>
+            </nav>
+            <div className="footer-column footer-contact">
+              <h2>Get in touch</h2>
+              <a
+                href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Siraj%40aaliden.com&amp;su=Project%20enquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon name="Mail" size={16} />
+                Siraj@aaliden.com
+              </a>
+              <a href="tel:+971586307552">
+                <Icon name="Phone" size={16} />
+                +971 58 630 7552
+              </a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <span>© Aaliden. Built around better work.</span>
+            <a className="footer-top" href="#home">
+              Back to top <Icon name="ArrowUpRight" size={16} />
+            </a>
+          </div>
         </div>
       </footer>
     </div>

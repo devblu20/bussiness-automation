@@ -20,6 +20,8 @@ import {
   Minus,
   Play,
   Pause,
+  Mail,
+  Phone,
 } from "lucide-react";
 const icons = {
   ArrowRight,
@@ -43,6 +45,8 @@ const icons = {
   Minus,
   Play,
   Pause,
+  Mail,
+  Phone,
 };
 type IconProps = { name: keyof typeof icons; size?: number };
 export function Icon({ name, size = 20 }: IconProps) {
