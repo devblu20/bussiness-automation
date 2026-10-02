@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
 import { services, productVisuals } from "./content";
 import "./styles.css";
+import { ServicePage, getServicePage } from "./ServicePage";
 
 const links = [
   ["Practices", "practices"],
@@ -44,7 +45,9 @@ function Brand() {
   );
 }
 
-export function App() {
+export function App({ pathname = "/" }: { pathname?: string }) {
+  const servicePage = getServicePage(pathname);
+  const home = servicePage ? "/" : "";
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
 
@@ -75,7 +78,11 @@ export function App() {
       </a>
       <header className="site-header">
         <div className="container header-inner">
-          <a href="#home" aria-label="Aaliden home" className="brand-link">
+          <a
+            href={`${home}#home`}
+            aria-label="Aaliden home"
+            className="brand-link"
+          >
             <Brand />
           </a>
           <nav
@@ -84,7 +91,11 @@ export function App() {
             aria-label="Main navigation"
           >
             {links.map(([label, id]) => (
-              <a href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>
+              <a
+                href={`${home}#${id}`}
+                key={id}
+                onClick={() => setMenuOpen(false)}
+              >
                 {label}
               </a>
             ))}
@@ -110,193 +121,211 @@ export function App() {
         </div>
       </header>
       <main id="main">
-        <section className="hero" id="home">
-          <div className="ambient-grid" aria-hidden="true" />
-          <div className="hero-sweep" aria-hidden="true" />
-          <div className="container hero-grid">
-            <div className="hero-copy rise-in">
-              <p className="eyebrow-badge">
-                <span className="signal-dot" /> HUMAN-LED INTELLIGENCE
-              </p>
-              <h1>
-                Less busywork.
-                <br />
-                <span>More possibility.</span>
-              </h1>
-              <p className="hero-description">
-                Aaliden is an AI and automation consultancy building practical
-                solutions for trading, ecommerce, online marketing, and everyday
-                business operations.
-              </p>
-              <div className="hero-actions">
-                <a className="button button-primary" href="#contact">
-                  Start a conversation <Icon name="ArrowUpRight" size={18} />
-                </a>
-                <a className="button button-glass" href="#practices">
-                  Explore our practices <Icon name="ArrowRight" size={18} />
-                </a>
-              </div>
-              <p className="hero-aside">Practical AI. People in control.</p>
-            </div>
-            <div className="hero-visual rise-in">
-              <div className="hero-photo">
-                <img
-                  src="/images/hero-business-team.jpg"
-                  alt="Business team reviewing data and working together in a modern office"
-                  width="1280"
-                  height="720"
-                  fetchPriority="high"
-                />
-              </div>
-              <p className="hero-image-caption">
-                Technology shaped around the people who use it.
-              </p>
-            </div>
-          </div>
-        </section>
-        <section className="section practices" id="practices">
-          <div className="container">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">01 / THE PRACTICE</p>
-                <h2>
-                  Built for the work
-                  <br />
-                  <span>that moves business.</span>
-                </h2>
-              </div>
-              <p>
-                Different sectors. The same practical aim: spend less time on
-                routine work and more time on decisions that matter.
-              </p>
-            </div>
-            <div className="practice-grid">
-              {services.map((service, index) => (
-                <article
-                  className="practice-card"
-                  id={service.id}
-                  key={service.id}
-                >
-                  <div className="practice-photo">
+        {servicePage ? (
+          <ServicePage page={servicePage} />
+        ) : (
+          <>
+            <section className="hero" id="home">
+              <div className="ambient-grid" aria-hidden="true" />
+              <div className="hero-sweep" aria-hidden="true" />
+              <div className="container hero-grid">
+                <div className="hero-copy rise-in">
+                  <p className="eyebrow-badge">
+                    <span className="signal-dot" /> HUMAN-LED INTELLIGENCE
+                  </p>
+                  <h1>
+                    Less busywork.
+                    <br />
+                    <span>More possibility.</span>
+                  </h1>
+                  <p className="hero-description">
+                    Aaliden is an AI and automation consultancy building
+                    practical solutions for trading, ecommerce, online
+                    marketing, and everyday business operations.
+                  </p>
+                  <div className="hero-actions">
+                    <a className="button button-primary" href="#contact">
+                      Start a conversation{" "}
+                      <Icon name="ArrowUpRight" size={18} />
+                    </a>
+                    <a className="button button-glass" href="#practices">
+                      Explore our practices <Icon name="ArrowRight" size={18} />
+                    </a>
+                  </div>
+                  <p className="hero-aside">Practical AI. People in control.</p>
+                </div>
+                <div className="hero-visual rise-in">
+                  <div className="hero-photo">
                     <img
-                      src={productVisuals[index].image}
-                      alt={productVisuals[index].alt}
+                      src="/images/hero-business-team.jpg"
+                      alt="Business team reviewing data and working together in a modern office"
+                      width="1280"
+                      height="720"
+                      fetchPriority="high"
+                    />
+                  </div>
+                  <p className="hero-image-caption">
+                    Technology shaped around the people who use it.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section className="section practices" id="practices">
+              <div className="container">
+                <div className="section-heading">
+                  <div>
+                    <p className="eyebrow">01 / THE PRACTICE</p>
+                    <h2>
+                      Built for the work
+                      <br />
+                      <span>that moves business.</span>
+                    </h2>
+                  </div>
+                  <p>
+                    Different sectors. The same practical aim: spend less time
+                    on routine work and more time on decisions that matter.
+                  </p>
+                </div>
+                <div className="practice-grid">
+                  {services.map((service, index) => (
+                    <article
+                      className="practice-card"
+                      id={service.id}
+                      key={service.id}
+                    >
+                      <div className="practice-photo">
+                        <img
+                          src={productVisuals[index].image}
+                          alt={productVisuals[index].alt}
+                          width="900"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div className="practice-body">
+                        <div className="practice-meta">
+                          <span className="practice-icon">
+                            <Icon name={service.icon} size={17} />
+                          </span>
+                          <span>{service.label}</span>
+                        </div>
+                        <h3>{productVisuals[index].shortName}</h3>
+                        <p>{service.text}</p>
+                        <div className="practice-example">
+                          <span>AN EXAMPLE</span>
+                          <p>{service.example}</p>
+                        </div>
+                        <a
+                          className="service-link"
+                          href={`/services/${service.id}/`}
+                        >
+                          Explore{" "}
+                          {service.id === "operations"
+                            ? "Business Operations"
+                            : productVisuals[index].shortName}{" "}
+                          <Icon name="ArrowRight" size={16} />
+                        </a>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+            <section className="section in-practice" id="in-practice">
+              <div className="container practice-story">
+                <div className="story-intro">
+                  <p className="eyebrow">02 / IN PRACTICE</p>
+                  <h2>
+                    From routine
+                    <br />
+                    <span>to room to think.</span>
+                  </h2>
+                  <p>
+                    A weekly report is one example. The goal is a clearer first
+                    draft, with your team still responsible for the final
+                    decision.
+                  </p>
+                  <p className="fine-print">
+                    Illustrative example. Capabilities depend on your tools,
+                    data access, and agreed project scope.
+                  </p>
+                </div>
+                <div className="story-pair">
+                  <article className="story-card">
+                    <p className="story-label">BEFORE / THE MANUAL WAY</p>
+                    <h3>Assembling the picture.</h3>
+                    <ul>
+                      <li>Collect figures from separate tools.</li>
+                      <li>Copy details into a spreadsheet.</li>
+                      <li>Chase gaps and write the same summary again.</li>
+                    </ul>
+                  </article>
+                  <article className="story-card story-card-after">
+                    <p className="story-label">AFTER / WITH AUTOMATION</p>
+                    <h3>Ready for your review.</h3>
+                    <ul>
+                      <li>Bring agreed data together.</li>
+                      <li>Flag missing details for attention.</li>
+                      <li>Prepare a useful draft for your team to approve.</li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <section className="section approach" id="approach">
+              <div className="container">
+                <div className="section-heading">
+                  <div>
+                    <p className="eyebrow">03 / THE APPROACH</p>
+                    <h2>
+                      Start small.
+                      <br />
+                      <span>Make it matter.</span>
+                    </h2>
+                  </div>
+                  <p>
+                    We build around real tasks, real constraints, and the people
+                    who use the result.
+                  </p>
+                </div>
+                <div className="approach-layout">
+                  <div className="approach-photo">
+                    <img
+                      src="/images/approach-glass.jpg"
+                      alt="Glass sphere refracting a delicate cyan grid"
                       width="900"
-                      height="600"
+                      height="900"
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
-                  <div className="practice-body">
-                    <div className="practice-meta">
-                      <span className="practice-icon">
-                        <Icon name={service.icon} size={17} />
-                      </span>
-                      <span>{service.label}</span>
-                    </div>
-                    <h3>{productVisuals[index].shortName}</h3>
-                    <p>{service.text}</p>
-                    <div className="practice-example">
-                      <span>AN EXAMPLE</span>
-                      <p>{service.example}</p>
-                    </div>
+                  <div className="step-grid">
+                    {steps.map((step) => (
+                      <article className="step-card" key={step.number}>
+                        <div className="step-image">
+                          <img
+                            src={step.image}
+                            alt={step.alt}
+                            width="900"
+                            height="675"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div className="step-content">
+                          <span className="step-number">{step.number}</span>
+                          <h3>{step.title}</h3>
+                          <p>{step.text}</p>
+                        </div>
+                      </article>
+                    ))}
                   </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="section in-practice" id="in-practice">
-          <div className="container practice-story">
-            <div className="story-intro">
-              <p className="eyebrow">02 / IN PRACTICE</p>
-              <h2>
-                From routine
-                <br />
-                <span>to room to think.</span>
-              </h2>
-              <p>
-                A weekly report is one example. The goal is a clearer first
-                draft, with your team still responsible for the final decision.
-              </p>
-              <p className="fine-print">
-                Illustrative example. Capabilities depend on your tools, data
-                access, and agreed project scope.
-              </p>
-            </div>
-            <div className="story-pair">
-              <article className="story-card">
-                <p className="story-label">BEFORE / THE MANUAL WAY</p>
-                <h3>Assembling the picture.</h3>
-                <ul>
-                  <li>Collect figures from separate tools.</li>
-                  <li>Copy details into a spreadsheet.</li>
-                  <li>Chase gaps and write the same summary again.</li>
-                </ul>
-              </article>
-              <article className="story-card story-card-after">
-                <p className="story-label">AFTER / WITH AUTOMATION</p>
-                <h3>Ready for your review.</h3>
-                <ul>
-                  <li>Bring agreed data together.</li>
-                  <li>Flag missing details for attention.</li>
-                  <li>Prepare a useful draft for your team to approve.</li>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </section>
-        <section className="section approach" id="approach">
-          <div className="container">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">03 / THE APPROACH</p>
-                <h2>
-                  Start small.
-                  <br />
-                  <span>Make it matter.</span>
-                </h2>
+                </div>
               </div>
-              <p>
-                We build around real tasks, real constraints, and the people who
-                use the result.
-              </p>
-            </div>
-            <div className="approach-layout">
-              <div className="approach-photo">
-                <img
-                  src="/images/approach-glass.jpg"
-                  alt="Glass sphere refracting a delicate cyan grid"
-                  width="900"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="step-grid">
-                {steps.map((step) => (
-                  <article className="step-card" key={step.number}>
-                    <div className="step-image">
-                      <img
-                        src={step.image}
-                        alt={step.alt}
-                        width="900"
-                        height="675"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div className="step-content">
-                      <span className="step-number">{step.number}</span>
-                      <h3>{step.title}</h3>
-                      <p>{step.text}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+            </section>
+          </>
+        )}
         <section className="section contact" id="contact">
           <div className="ambient-grid" aria-hidden="true" />
           <div className="container contact-layout">
@@ -337,7 +366,7 @@ export function App() {
         <div className="container">
           <div className="footer-main">
             <div className="footer-brand">
-              <a href="#home" aria-label="Aaliden home">
+              <a href={`${home}#home`} aria-label="Aaliden home">
                 <Brand />
               </a>
               <p>
@@ -348,16 +377,16 @@ export function App() {
             </div>
             <nav className="footer-column" aria-label="Footer navigation">
               <h2>Explore</h2>
-              <a href="#practices">Our practices</a>
-              <a href="#in-practice">In practice</a>
-              <a href="#approach">Our approach</a>
+              <a href={`${home}#practices`}>Our practices</a>
+              <a href={`${home}#in-practice`}>In practice</a>
+              <a href={`${home}#approach`}>Our approach</a>
             </nav>
             <nav className="footer-column" aria-label="Practice areas">
               <h2>Expertise</h2>
-              <a href="#trading">Trading</a>
-              <a href="#ecommerce">Ecommerce</a>
-              <a href="#marketing">Marketing</a>
-              <a href="#operations">Operations</a>
+              <a href="/services/trading/">Trading</a>
+              <a href="/services/ecommerce/">Ecommerce</a>
+              <a href="/services/marketing/">Marketing</a>
+              <a href="/services/operations/">Business Operations</a>
             </nav>
             <div className="footer-column footer-contact">
               <h2>Get in touch</h2>
@@ -377,7 +406,7 @@ export function App() {
           </div>
           <div className="footer-bottom">
             <span>© Aaliden. Built around better work.</span>
-            <a className="footer-top" href="#home">
+            <a className="footer-top" href={servicePage ? "#main" : "#home"}>
               Back to top <Icon name="ArrowUpRight" size={16} />
             </a>
           </div>

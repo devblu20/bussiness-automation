@@ -1051,6 +1051,56 @@ h2 span {
     margin-top: 22px;
   }
 }
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+.service-link:hover {
+  text-decoration: underline;
+}
+.service-hero h1 {
+  white-space: normal;
+  font-size: clamp(38px, 4.5vw, 64px);
+}
+.service-hero .eyebrow {
+  margin-top: 30px;
+}
+.service-capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.service-capabilities .story-card {
+  min-height: 260px;
+}
+.story-card > p:not(.story-label):not(.eyebrow) {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.service-scope {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.service-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+@media (max-width: 820px) {
+  .service-capabilities {
+    grid-template-columns: 1fr;
+  }
+  .service-capabilities .story-card {
+    min-height: 0;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
